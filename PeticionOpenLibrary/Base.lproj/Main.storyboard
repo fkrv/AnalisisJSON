@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="PeticionOpenLibrary" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -15,11 +17,74 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7jJ-pb-owQ">
+                                <rect key="frame" x="185" y="58" width="230" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="230" id="EID-HV-zKv"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation" returnKeyType="search"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ISBN" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LKu-a2-8oR">
+                                <rect key="frame" x="281" y="20" width="38" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="6dw-Di-K1y"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N0W-Ys-2i1">
+                                <rect key="frame" x="275" y="114" width="51" height="30"/>
+                                <state key="normal" title="Limpiar"/>
+                                <connections>
+                                    <action selector="clearISBN:" destination="BYZ-38-t0r" eventType="touchUpInside" id="NhV-CK-mee"/>
+                                </connections>
+                            </button>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6QA-JN-Yez">
+                                <rect key="frame" x="160" y="175" width="280" height="141"/>
+                                <subviews>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="roP-76-bMR">
+                                        <rect key="frame" x="20" y="14" width="240" height="107"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <mutableString key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="roP-76-bMR" firstAttribute="top" secondItem="6QA-JN-Yez" secondAttribute="top" constant="14" id="ASA-1C-42y"/>
+                                    <constraint firstItem="roP-76-bMR" firstAttribute="leading" secondItem="6QA-JN-Yez" secondAttribute="leading" constant="20" id="HiT-HR-UAJ"/>
+                                    <constraint firstItem="roP-76-bMR" firstAttribute="centerY" secondItem="6QA-JN-Yez" secondAttribute="centerY" constant="-3" id="R7Z-LU-97K"/>
+                                    <constraint firstItem="roP-76-bMR" firstAttribute="centerX" secondItem="6QA-JN-Yez" secondAttribute="centerX" id="U1Q-cF-60p"/>
+                                    <constraint firstAttribute="bottom" secondItem="roP-76-bMR" secondAttribute="bottom" constant="20" id="XoX-PJ-gj5"/>
+                                    <constraint firstAttribute="trailing" secondItem="roP-76-bMR" secondAttribute="trailing" constant="20" id="fnd-tL-jKH"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="7jJ-pb-owQ" firstAttribute="top" secondItem="LKu-a2-8oR" secondAttribute="bottom" constant="17" id="9C6-94-wS0"/>
+                            <constraint firstItem="6QA-JN-Yez" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="7:15" id="NNO-12-WIe"/>
+                            <constraint firstItem="LKu-a2-8oR" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="Tc0-uf-02t"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="6QA-JN-Yez" secondAttribute="bottom" constant="284" id="VAT-Bw-7zf"/>
+                            <constraint firstItem="6QA-JN-Yez" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="dhG-JX-cWB"/>
+                            <constraint firstItem="7jJ-pb-owQ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="lzy-nE-hf7"/>
+                            <constraint firstItem="N0W-Ys-2i1" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="o4l-hy-qwh"/>
+                            <constraint firstItem="LKu-a2-8oR" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="poM-Nx-xN6"/>
+                            <constraint firstItem="N0W-Ys-2i1" firstAttribute="top" secondItem="7jJ-pb-owQ" secondAttribute="bottom" constant="26" id="sw3-8F-0Uy"/>
+                            <constraint firstItem="6QA-JN-Yez" firstAttribute="top" secondItem="N0W-Ys-2i1" secondAttribute="bottom" constant="31" id="yha-rp-ELu"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="resultado" destination="roP-76-bMR" id="4o4-wC-aJx"/>
+                        <outlet property="textISBN" destination="7jJ-pb-owQ" id="Imp-6z-6rf"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="365" y="238"/>
         </scene>
     </scenes>
 </document>
