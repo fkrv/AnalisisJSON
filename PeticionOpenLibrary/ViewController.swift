@@ -23,10 +23,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-    @IBAction func clearISBN(sender: AnyObject) {
-        textISBN.text = ""
-    }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         let texto = textISBN.text

@@ -18,7 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7jJ-pb-owQ">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="7jJ-pb-owQ">
                                 <rect key="frame" x="185" y="58" width="230" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="230" id="EID-HV-zKv"/>
@@ -35,20 +35,12 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N0W-Ys-2i1">
-                                <rect key="frame" x="275" y="114" width="51" height="30"/>
-                                <state key="normal" title="Limpiar"/>
-                                <connections>
-                                    <action selector="clearISBN:" destination="BYZ-38-t0r" eventType="touchUpInside" id="NhV-CK-mee"/>
-                                </connections>
-                            </button>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6QA-JN-Yez">
                                 <rect key="frame" x="160" y="175" width="280" height="141"/>
                                 <subviews>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="roP-76-bMR">
                                         <rect key="frame" x="20" y="14" width="240" height="107"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <mutableString key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
@@ -71,10 +63,8 @@
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="6QA-JN-Yez" secondAttribute="bottom" constant="284" id="VAT-Bw-7zf"/>
                             <constraint firstItem="6QA-JN-Yez" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="dhG-JX-cWB"/>
                             <constraint firstItem="7jJ-pb-owQ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="lzy-nE-hf7"/>
-                            <constraint firstItem="N0W-Ys-2i1" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="o4l-hy-qwh"/>
                             <constraint firstItem="LKu-a2-8oR" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="poM-Nx-xN6"/>
-                            <constraint firstItem="N0W-Ys-2i1" firstAttribute="top" secondItem="7jJ-pb-owQ" secondAttribute="bottom" constant="26" id="sw3-8F-0Uy"/>
-                            <constraint firstItem="6QA-JN-Yez" firstAttribute="top" secondItem="N0W-Ys-2i1" secondAttribute="bottom" constant="31" id="yha-rp-ELu"/>
+                            <constraint firstItem="6QA-JN-Yez" firstAttribute="top" secondItem="7jJ-pb-owQ" secondAttribute="bottom" constant="87" id="ySV-2y-hho"/>
                         </constraints>
                     </view>
                     <connections>
