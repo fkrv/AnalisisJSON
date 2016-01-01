@@ -12,6 +12,10 @@ class ViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var textISBN: UITextField!
     @IBOutlet weak var resultado: UITextView!
+    @IBOutlet weak var titulo: UITextView!
+    @IBOutlet weak var autores: UITextView!
+    @IBOutlet weak var portada: UIImageView!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +26,10 @@ class ViewController: UIViewController, UITextFieldDelegate {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    @IBAction func comenzarAEscribir(sender: AnyObject) {
+        self.portada.image = nil
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
@@ -41,10 +49,49 @@ class ViewController: UIViewController, UITextFieldDelegate {
 
             let datos:NSData? = NSData(contentsOfURL: url!)
             if (datos != nil) {
-                let texto = NSString(data: datos!, encoding: NSUTF8StringEncoding)
-                if (texto != nil) {
-                    self.resultado.text = texto as! String
-                    print(texto)
+                do {
+                    let texto = NSString(data: datos!, encoding: NSUTF8StringEncoding)
+                    if (texto != nil) {
+                        self.resultado.text = texto as! String
+                        print(texto)
+                    }
+                    let json = try NSJSONSerialization.JSONObjectWithData(datos!, options: NSJSONReadingOptions.MutableLeaves)
+                    let objDiccionario1 = json as! NSDictionary
+                    
+                    if(objDiccionario1["ISBN:\(isbn)"] != nil) {
+                        let objDiccionario2 = objDiccionario1["ISBN:\(isbn)"] as! NSDictionary
+                        self.titulo.text = objDiccionario2["title"] as! NSString as String
+                    
+                        let arregloDiccionariosAutor = objDiccionario2["authors"] as! Array<NSDictionary>
+                        var autor = ""
+                        var i : Int = 0
+                    
+                        for diccionarioAutor in arregloDiccionariosAutor {
+                            if( i != 0) {
+                                autor += ", "
+                            }
+                            autor += diccionarioAutor["name"] as! NSString as String
+                        
+                            i++
+                        }
+                        self.autores.text = autor
+                    
+                        if(objDiccionario2["cover"] != nil) {
+                            let objDiccionario3 = objDiccionario2["cover"] as! NSDictionary
+                        
+                            let cover = objDiccionario3["large"] as! NSString as String
+                        
+                            if(cover != "") {
+                                if let checkedUrl = NSURL(string: cover) {
+                                    portada.contentMode = .ScaleAspectFit
+                                    downloadImage(checkedUrl)
+                                }
+                            }
+                        }
+                    }
+                }
+                catch _ {
+
                 }
             } else {
                 showSimpleAlert()
@@ -70,5 +117,21 @@ class ViewController: UIViewController, UITextFieldDelegate {
         
         presentViewController(alertController, animated: true, completion: nil)
     }
+    
+    func getDataFromUrl(url:NSURL, completion: ((data: NSData?, response: NSURLResponse?, error: NSError? ) -> Void)) {
+        NSURLSession.sharedSession().dataTaskWithURL(url) { (data, response, error) in
+            completion(data: data, response: response, error: error)
+            }.resume()
+    }
+    
+    func downloadImage(url: NSURL){
+        getDataFromUrl(url) { (data, response, error)  in
+            dispatch_async(dispatch_get_main_queue()) { () -> Void in
+                guard let data = data where error == nil else { return }
+                self.portada.image = UIImage(data: data)
+            }
+        }
+    }
+    
 }
 
